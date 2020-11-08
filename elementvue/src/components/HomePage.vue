@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import image1 from "../assets/gy.jpg";
+    import image1 from "../assets/gy988.jpg";
     import image2 from "../assets/zf.jpg";
     import image3 from "../assets/zy.jpg";
     import image4 from "../assets/mc.jpg";
