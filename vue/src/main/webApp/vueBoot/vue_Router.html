@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue的路由器使用</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/login?id=10&name=石昊" tag="button">点我见石昊</router-link>
+        <router-link to="/register/24" tag="button">点我见荒</router-link>
+        <router-view></router-view>
+    </div>
+</body>
+
+<script src="./js/vue.js"></script>
+<script src="./js/vue-router.js"></script>
+<script>
+
+    const login = {
+        template:'<h1>石昊</h1>',
+        data(){return {
+        }},
+        methods: {
+
+        },
+        created(){
+            console.log(this.$route.query.id+"=========>"+this.$route.query.name);
+        }
+    };
+
+    const register = {
+        template: '<h1>荒</h1>',
+        created() {
+            console.log(this.$route.params.id);
+        }
+    };
+
+    const router = new VueRouter({
+        routes:[
+            {path:'/',redirect:'/login'},
+            {path:'/login',component:login},
+            {path:'/register/:id',component:register}
+        ]
+
+    });
+
+    const app = new Vue({
+        el:"#app",
+        data:{},
+        methods:{},
+        router:router
+    });
+</script>
+</html>

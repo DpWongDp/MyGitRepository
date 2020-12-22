@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>嵌套路由</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/shop" tag="button">展示</router-link>
+        <router-view></router-view>
+    </div>
+
+    <!--shop组件的模板详情-->
+<template id="shop">
+    <div>
+        <h1>商品展示</h1>
+        <router-link to="/shop/add" tag="button">添加</router-link>
+        <router-link to="/shop/del" tag="button">删除</router-link>
+        <router-view></router-view>
+    </div>
+</template>
+
+</body>
+
+<script src="./js/vue.js"></script>
+<script src="./js/vue-router.js"></script>
+<script>
+    const shop ={
+        template:"#shop"
+    }
+
+    const add = {
+        template: "<h3>商品添加</h3>"
+    }
+
+
+    const del = {
+        template: "<h3>商品删除</h3>"
+    }
+
+    const router = new VueRouter({
+        routes:[ {path:"/shop",component:shop,children: [
+                {path:"add",component:add},
+                {path:"del",component:del}
+            ]}
+        ]
+    });
+
+    const app = new Vue({
+        el:"#app",
+        data:{},
+        methods:{},
+        router:router
+    });
+</script>
+</html>
